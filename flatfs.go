@@ -17,10 +17,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ipfs/go-datastore"
-	"github.com/ipfs/go-datastore/query"
+	"github.com/dms3-fs/go-datastore"
+	"github.com/dms3-fs/go-datastore/query"
 
-	logging "github.com/ipfs/go-log"
+	logging "github.com/dms3-fs/go-log"
 )
 
 var log = logging.Logger("flatfs")
@@ -615,7 +615,7 @@ func (fs *Datastore) Query(q query.Query) (query.Results, error) {
 		q.Offset > 0 ||
 		!q.KeysOnly {
 		// TODO this is overly simplistic, but the only caller is
-		// `ipfs refs local` for now, and this gets us moving.
+		// `dms3fs refs local` for now, and this gets us moving.
 		return nil, errors.New("flatfs only supports listing all keys in random order")
 	}
 

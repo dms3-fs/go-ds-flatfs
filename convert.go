@@ -11,8 +11,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ipfs/go-datastore"
-	"github.com/ipfs/go-datastore/query"
+	"github.com/dms3-fs/go-datastore"
+	"github.com/dms3-fs/go-datastore/query"
 )
 
 func UpgradeV0toV1(path string, prefixLen int) error {

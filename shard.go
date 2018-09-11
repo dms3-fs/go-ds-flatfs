@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-var IPFS_DEF_SHARD = NextToLast(2)
-var IPFS_DEF_SHARD_STR = IPFS_DEF_SHARD.String()
+var DMS3FS_DEF_SHARD = NextToLast(2)
+var DMS3FS_DEF_SHARD_STR = DMS3FS_DEF_SHARD.String()
 
 const PREFIX = "/repo/flatfs/shard/"
 
@@ -135,8 +135,8 @@ func WriteShardFunc(dir string, id *ShardIdV1) error {
 }
 
 func WriteReadme(dir string, id *ShardIdV1) error {
-	if id.String() == IPFS_DEF_SHARD.String() {
-		err := ioutil.WriteFile(filepath.Join(dir, README_FN), []byte(README_IPFS_DEF_SHARD), 0444)
+	if id.String() == DMS3FS_DEF_SHARD.String() {
+		err := ioutil.WriteFile(filepath.Join(dir, README_FN), []byte(README_DMS3FS_DEF_SHARD), 0444)
 		if err != nil {
 			return err
 		}

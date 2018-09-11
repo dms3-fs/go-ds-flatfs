@@ -15,11 +15,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ipfs/go-datastore"
-	"github.com/ipfs/go-datastore/query"
-	dstest "github.com/ipfs/go-datastore/test"
+	"github.com/dms3-fs/go-datastore"
+	"github.com/dms3-fs/go-datastore/query"
+	dstest "github.com/dms3-fs/go-datastore/test"
 
-	"github.com/ipfs/go-ds-flatfs"
+	"github.com/dms3-fs/go-ds-flatfs"
 )
 
 func tempdir(t testing.TB) (path string, cleanup func()) {
@@ -211,9 +211,9 @@ func testStorage(p *params, t *testing.T) {
 	if !seen {
 		t.Error("did not see the data file")
 	}
-	if fs.ShardStr() == flatfs.IPFS_DEF_SHARD_STR && !haveREADME {
+	if fs.ShardStr() == flatfs.DMS3FS_DEF_SHARD_STR && !haveREADME {
 		t.Error("expected _README file")
-	} else if fs.ShardStr() != flatfs.IPFS_DEF_SHARD_STR && haveREADME {
+	} else if fs.ShardStr() != flatfs.DMS3FS_DEF_SHARD_STR && haveREADME {
 		t.Error("did not expect _README file")
 	}
 }
@@ -770,7 +770,7 @@ func TestSHARDINGFile(t *testing.T) {
 	tempdir, cleanup := tempdir(t)
 	defer cleanup()
 
-	fun := flatfs.IPFS_DEF_SHARD
+	fun := flatfs.DMS3FS_DEF_SHARD
 
 	err := flatfs.Create(tempdir, fun)
 	if err != nil {
@@ -781,8 +781,8 @@ func TestSHARDINGFile(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Open fail: %v\n", err)
 	}
-	if fs.ShardStr() != flatfs.IPFS_DEF_SHARD_STR {
-		t.Fatalf("Expected '%s' for shard function got '%s'", flatfs.IPFS_DEF_SHARD_STR, fs.ShardStr())
+	if fs.ShardStr() != flatfs.DMS3FS_DEF_SHARD_STR {
+		t.Fatalf("Expected '%s' for shard function got '%s'", flatfs.DMS3FS_DEF_SHARD_STR, fs.ShardStr())
 	}
 	fs.Close()
 
